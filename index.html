@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant at The Grand Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Section */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            color: white;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar li a {
+            color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar li a:hover {
+            color: #ff6f61;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: url('restaurant-hero.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 600;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-btn {
+            background-color: #ff6f61;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hero .cta-btn:hover {
+            background-color: #e45b4d;
+            transform: scale(1.05);
+        }
+
+        /* Restaurant Overview */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to right, #f2f2f2 50%, #ff6f61 50%);
+        }
+
+        .about h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about p {
+            font-size: 18px;
+            color: #555;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 80px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .menu h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item h3 {
+            font-size: 24px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .menu-item .price {
+            font-size: 18px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 20px;
+            background: #fff;
+        }
+
+        .gallery h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .gallery-images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .contact button {
+            padding: 15px;
+            background-color: #ff6f61;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #e45b4d;
+            transform: scale(1.05);
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer .social-media {
+            margin-bottom: 20px;
+        }
+
+        footer .social-media a {
+            margin: 0 15px;
+            font-size: 18px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-media a:hover {
+            color: #ff6f61;
+        }
+
+        footer p {
+            font-size: 16px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Restaurant at The Grand Hotel</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div>
+            <h1>Luxury Dining Experience</h1>
+            <p>Indulge in world-class dining at our restaurant, located within The Grand Hotel.</p>
+            <button class="cta-btn">Make a Reservation</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Located within the heart of The Grand Hotel, our restaurant offers a modern, luxurious dining experience with a menu that celebrates international cuisine. Whether you're here for a quick meal or a special occasion, we promise an unforgettable experience.</p>
+        <img src="restaurant-interior.jpg" alt="Restaurant Interior">
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="dish1.jpg" alt="Dish 1">
+                <h3>Grilled Filet Mignon</h3>
+                <p>Aged steak grilled to perfection, served with a signature sauce.</p>
+                <p class="price">$45.99</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish2.jpg" alt="Dish 2">
+                <h3>Lobster Ravioli</h3>
+                <p>Delicate lobster-filled ravioli with a creamy garlic sauce.</p>
+                <p class="price">$32.99</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish3.jpg" alt="Dish 3">
+                <h3>Vegetarian Stir-fry</h3>
+                <p>Fresh vegetables stir-fried with an aromatic soy-based sauce.</p>
+                <p class="price">$21.99</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-images">
+            <img src="food1.jpg" alt="Food Image 1">
+            <img src="restaurant.jpg" alt="Restaurant Image">
+            <img src="hotel-room.jpg" alt="Hotel Room">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact & Reservations</h2>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>&copy; 2024 The Grand Hotel. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
